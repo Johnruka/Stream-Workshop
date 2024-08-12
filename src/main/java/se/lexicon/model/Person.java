@@ -1,72 +1,49 @@
 package se.lexicon.model;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Person {
+public class Person implements Serializable {
 
-    private static int counter = 0;
-    private int id;
+    private int personId;
     private String firstName;
     private String lastName;
-    private LocalDate birthDate;
+    private LocalDate dateOfBirth;
     private Gender gender;
 
-    public Person(String firstName, String lastName, LocalDate birthDate, Gender gender) {
+    public Person(int personId, String firstName, String lastName, LocalDate dateOfBirth, Gender gender) {
+        this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.id = ++counter;
     }
 
-    public int getId() {
-        return id;
+    public Person() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getPersonId() {
+        return personId;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public static int getCounter() {
-        return counter;
-    }
-
-    public static void setCounter(int counter) {
-        Person.counter = counter;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public Gender getGender() {
         return gender;
-    }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+
     }
 
     @Override
@@ -74,25 +51,25 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id == person.id &&
+        return personId == person.personId &&
                 Objects.equals(firstName, person.firstName) &&
                 Objects.equals(lastName, person.lastName) &&
-                Objects.equals(birthDate, person.birthDate) &&
+                Objects.equals(dateOfBirth, person.dateOfBirth) &&
                 gender == person.gender;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, birthDate, gender);
+        return Objects.hash(personId, firstName, lastName, dateOfBirth, gender);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Person{");
-        sb.append("id=").append(id);
+        sb.append("personId=").append(personId);
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", birthDate=").append(birthDate);
+        sb.append(", dateOfBirth=").append(dateOfBirth);
         sb.append(", gender=").append(gender);
         sb.append('}');
         return sb.toString();
