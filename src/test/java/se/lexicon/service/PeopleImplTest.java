@@ -5,8 +5,7 @@ import se.lexicon.model.Person;
 
 import java.util.List;
 
-public class PeopleImpl implements People {
-
+public class PeopleImplTest {
     private static final PeopleImpl INSTANCE;
 
     static {
@@ -19,14 +18,7 @@ public class PeopleImpl implements People {
 
     private List<Person> people;
 
-    PeopleImpl(){
+    private void PeopleImpl() {
         people = JsonReader.getInstance().read();
-
-
-}
-
-    @Override
-    public List<Person> getPeople() {
-        return people;
     }
 }

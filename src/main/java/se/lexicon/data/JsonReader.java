@@ -22,7 +22,7 @@ public class JsonReader {
         return INSTANCE;
     }
 
-    private JsonReader(){}
+    JsonReader(){}
 
     public List<Person> read(){
         List<Person> people = new ArrayList<>();
